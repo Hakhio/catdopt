@@ -3,6 +3,8 @@
   --main-color: #fffbf3;
   --second-color: #3c1e00;
   --third-color: #ffcc00;
+
+  --main-width: 70%;
 }
 
 /* Importations de fichiers externes */
@@ -11,47 +13,177 @@
 html,
 body {
   font-family: "Roboto";
+  height: 100%;
 }
 
-/* 
-  → navbar 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  → alert
 */
 
-.navbar {
-  height: 80px;
+.alert {
+  width: 50%;
+  padding: 20px;
+  margin: 20px auto;
+  color: white;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  box-sizing: border-box;
+
+  position: absolute;
+  left: 50%;
+  top: 120px;
+  transform: translateX(-50%);
+}
+
+.alert-success {
+  background-color: #ade0c9;
+  border-color: #155e3d;
+  color: #155e3d;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #58151c;
+  color: #58151c;
+
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+/*
+  → container
+*/
+
+.container {
+  width: var(--main-width);
+  margin: 40px auto;
+  flex: 1 0 auto;
+}
+
+.container h1 {
+  margin-bottom: 25px;
+}
+
+/*
+  → footer
+*/
+
+.footer {
   display: flex;
-  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  margin: 0 auto;
+  height: 100px;
   background: var(--main-color);
 }
 
-.navbar-brand .navbar-icon {
-  height: 80px;
-}
-
-.navbar-brand,
-.navbar-list,
-.navbar-brand > * {
-  display: inline-block;
-}
-
-.navbar-list {
+.footer * {
+  flex-grow: 1;
   display: flex;
-  list-style: none;
-  align-items: end;
-  flex: 1 1 auto;
-  justify-content: flex-end;
-  gap: 40px;
+  align-items: center;
+  justify-content: center;
 }
 
-.navbar-list > *:last-child {
-  margin-right: 20px;
+/* 
+  → 404
+*/
+
+.not-found {
+  text-align: center;
 }
 
-.navbar-list a:visited,
-.navbar-list a:link,
-.navbar-list a:active {
+.not-found h1 {
+  font-size: 2.4em;
+}
+
+/*
+  → animation
+*/
+
+.fade-up {
+  transform: translate(-50%, -50px);
+  transition: 1000ms;
+  opacity: 0;
+}
+
+/*
+  → card
+*/
+
+.cards {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  flex-basis: auto;
+  justify-content: center;
+}
+
+.card {
+  width: 250px;
+  /* border: 1px solid lightslategrey; */
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 2px lightslategrey;
+}
+
+.card-info {
+  display: block;
+}
+
+.card-info-item {
+  margin: 5px 0;
+}
+
+.card-info-item * {
+  display: flex;
+}
+
+.card-info-label {
+  font-weight: bold;
+}
+
+.card-info-value {
+  color: grey;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.card-btn {
+  padding: 10px 10px;
+  margin-top: 10px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: var(--main-color);
+  border-color: var(--main-color);
+}
+
+.card-btn a {
+  color: black;
   text-decoration: none;
-  color: var(--second-color);
   font-weight: bold;
   font-size: 1.2em;
 }

@@ -11,6 +11,7 @@
     <title>Catdopt</title>
 
     <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/navbar.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
 
     <script src="./assets/js/script.js" defer></script>

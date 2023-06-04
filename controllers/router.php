@@ -1,45 +1,57 @@
 <?php
 
-$uri = '';
-
-if ($_SERVER['HTTP_HOST'] == 'localhost') {
-    $array_uri = explode('/', $_SERVER['REQUEST_URI']);
-    array_shift($array_uri);
-    $uri = $array_uri;
-} else {
-    $uri = explode('/', $_SERVER['REQUEST_URI']);
-}
-
-if ($uri[0] == 'catdopt') {
-    array_shift($uri);
-}
-
 // uri[0] : route 
 // uri[1] : action
 
+$route = '';
+$action = '';
+
 // Définir les routes
 $routes = [
-    '' => 'home',
-    'home' => 'home',
-    'cat' => 'cat'
+    '' => [
+        'path' => 'home',
+        'component' => 'controllers/HomeController.php'
+    ],
+
+    'home' => [
+        'path' => 'home',
+        'component' => 'controllers/HomeController.php'
+    ],
+
+    'cat' => [
+        'path' => 'cat',
+        'action' => [
+            'read' => [
+                'path' => '',
+                'component' => 'controllers/CatController/read.php'
+            ],
+            'create' => [
+                'path' => '',
+                'component' => 'controllers/CatController/read.php'
+            ],
+        ]
+    ]
 ];
 
-// Vérifier si l'URL correspond à une route valide
-if (array_key_exists($uri[0], $routes)) {
+if (isset($_GET['section'])) {
 
-    // 'home' => HomeController
-    $controllerName = ucfirst($routes[$uri[0]]) . 'Controller';
-    $controllerFile = "controllers/$controllerName.php";
+    $route = $_GET['section'];
 
-    if (isset($uri[1])) {
-        echo "Y a une action !!!!";
-    }
+    // Vérifier si l'URL correspond à une route valide
+    if (array_key_exists($route, $routes)) {
 
-    if (file_exists($controllerFile)) {
-        require_once $controllerFile;
+        if (isset($_GET['action'])) {
+            $action = $_GET['action'];
+            if (array_key_exists($action, $routes[$route]['action'])) {
+                include $routes[$route]['action'][$action]['component'];
+            } else {
+                echo alert(false, "L'action n'existe pas ! ($action)");
+            }
+        } else {
+            include $routes[$route]['component'];
+        }
     } else {
-        echo "<p>Erreur: Page non trouvée</p>";
+        echo alert(false, "Page inconnue ! ($route)");
+        include "views/partials/404.php";
     }
-} else {
-    echo "<p>Erreur: Route non trouvée</p>";
 }
