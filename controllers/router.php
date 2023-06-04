@@ -20,7 +20,8 @@ if ($uri[0] == 'catdopt') {
 // Définir les routes
 $routes = [
     '' => 'home',
-    'home' => 'home'
+    'home' => 'home',
+    'cat' => 'cat'
 ];
 
 // Vérifier si l'URL correspond à une route valide
@@ -29,6 +30,10 @@ if (array_key_exists($uri[0], $routes)) {
     // 'home' => HomeController
     $controllerName = ucfirst($routes[$uri[0]]) . 'Controller';
     $controllerFile = "controllers/$controllerName.php";
+
+    if (isset($uri[1])) {
+        echo "Y a une action !!!!";
+    }
 
     if (file_exists($controllerFile)) {
         require_once $controllerFile;

@@ -1,6 +1,57 @@
+/* Déclaration des variables globales */
+:root {
+  --main-color: #fffbf3;
+  --second-color: #3c1e00;
+  --third-color: #ffcc00;
+}
+
+/* Importations de fichiers externes */
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
 html,
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: "Roboto";
+}
+
+/* 
+  → navbar 
+*/
+
+.navbar {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background: var(--main-color);
+}
+
+.navbar-brand .navbar-icon {
+  height: 80px;
+}
+
+.navbar-brand,
+.navbar-list,
+.navbar-brand > * {
+  display: inline-block;
+}
+
+.navbar-list {
+  display: flex;
+  list-style: none;
+  align-items: end;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.navbar-list > *:last-child {
+  margin-right: 20px;
+}
+
+.navbar-list a:visited,
+.navbar-list a:link,
+.navbar-list a:active {
+  text-decoration: none;
+  color: var(--second-color);
+  font-weight: bold;
+  font-size: 1.2em;
 }
