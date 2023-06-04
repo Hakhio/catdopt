@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS chat (
     , sexe CHAR(1) NOT NULL
     , date_naissance DATE
     , sterilise BIT NOT NULL
+    , remarque VARCHAR(250)
 
     , race INT NOT NULL
     , couleur INT NOT NULL
@@ -31,6 +32,7 @@ CREATE TABLE IF NOT EXISTS chat (
     , patron INT NOT NULL
 
     , CONSTRAINT PK_chat PRIMARY KEY (id)
+    , CONSTRAINT CK_sexe CHECK (sexe IN ('M', 'F', NULL))
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
