@@ -67,7 +67,7 @@ foreach ($response['data'] as $cat) {
     $cats_cards .= "</div>";
     $cats_cards .= "</div>";
     $cats_cards .= "<div class='card-btn-wrapper'>";
-    $cats_cards .= "<button class='card-btn'><a href=''>Adopter !</a></button>";
+    $cats_cards .= "<button class='card-btn'><a href=''>Contacter</a></button>";
     $cats_cards .= "</div>";
     $cats_cards .= "</div>";
 }
